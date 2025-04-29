@@ -257,7 +257,7 @@ function ProductList({ onHomeClick }) {
     };
 
     const handleAddtoCart = (plant) => {
-        dispatch(addItem(plant))
+        dispatch(addItem({name: plant.name, image: plant.image, cost: plant.cost}))
         setAddedToCart((prevState) => ({
             ...prevState,
             [plant.name]: true, //set product name to true since it is in the cart
@@ -297,8 +297,8 @@ function ProductList({ onHomeClick }) {
                                     <img src={plant.image} alt={plant.name} />
                                     <div className="product-title"> {plant.name} </div>
                                     <div className="product-description"> {plant.description} </div>
-                                    <div className='product-price'> ${plant.cost} </div>
-                                    <button className="product-button" onClick={() => handleAddtoCart(pIndex)}> Add to Cart </button>
+                                    <div className='product-price'> {plant.cost} </div>
+                                    <button className="product-button" onClick={() => handleAddtoCart(plant)}> Add to Cart </button>
                                 </div>
                             ))}
                             </div>
