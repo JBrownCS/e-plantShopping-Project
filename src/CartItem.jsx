@@ -37,7 +37,6 @@ const CartItem = ({ onContinueShopping }) => {
         dispatch(removeItem({name: item.name}));
     }
   };
-  };
 
   const handleRemove = (item) => {
     dispatch(removeItem({name: item.name}));
