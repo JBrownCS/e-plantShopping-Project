@@ -257,16 +257,15 @@ function ProductList({ onHomeClick }) {
     };
 
     const handleAddtoCart = (plant) => {
+        var button = document.getElementById(plant.name);
         dispatch(addItem(plant));
         setAddedToCart((addedToCart) => ({
             ...addedToCart,
             [plant.name]: true, //set product name to true since it is in the cart
-        }))
-
-        var button = document.getElementById(plant.name);
+            }))
         button.innerHTML = "Added to Cart";
         button.disabled = true;
-
+        button.style.backgroundColor = 'grey';
     };
 
     
@@ -302,7 +301,13 @@ function ProductList({ onHomeClick }) {
                                     <div className="product-title"> {plant.name} </div>
                                     <div className="product-description"> {plant.description} </div>
                                     <div className='product-price'> {plant.cost} </div>
-                                    <button className="product-button" id={plant.name} onClick={() => handleAddtoCart(plant)}> Add to Cart </button>
+                                    <button 
+                                        className="product-button" 
+                                        id={plant.name}
+                                        disabled={addedToCart[plant.name]}
+                                        onClick={() => handleAddtoCart(plant)}> 
+                                        Add to Cart 
+                                    </button>
                                 </div>
                             ))}
                             </div>
