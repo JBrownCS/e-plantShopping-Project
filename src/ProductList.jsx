@@ -252,6 +252,8 @@ function ProductList({ onHomeClick }) {
         e.preventDefault();
         setShowCart(false);
     };
+
+    
     return (
         <div>
             <div className="navbar" style={styleObj}>
@@ -274,8 +276,26 @@ function ProductList({ onHomeClick }) {
             </div>
             {!showCart ? (
                 <div className="product-grid">
-
-
+                    {plantsArray.map((category, index) => (
+                        <div key={index}>
+                            <h1><div>{category.category}</div></h1>
+                            <div className="all_plants" key={index}>
+                            {category.plants.map((plant, pIndex) => (
+                                <div className='product-card'>
+                                    <div className="plant-image">
+                                        <img src={plant.image} alt={plant.name} />
+                                    </div>
+                                    <div className="plant_name"> {plant.name} </div>
+                                    <div className="plant_desc"> {plant.description} </div>
+                                    <div> ${plant.cost} </div>
+                                    <div className="addcart_btn">
+                                        <button className="add-btn" onClick={() => handleAddtoCart(index)}> Add to Cart </button>
+                                    </div>
+                                </div>
+                            ))}
+                            </div>
+                        </div>
+                        ))}
                 </div>
             ) : (
                 <CartItem onContinueShopping={handleContinueShopping} />
