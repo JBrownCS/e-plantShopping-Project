@@ -290,18 +290,14 @@ function ProductList({ onHomeClick }) {
                     {plantsArray.map((category, index) => (
                         <div key={index}>
                             <h1><div>{category.category}</div></h1>
-                            <div className="all_plants" key={index}>
+                            <div className="product-list">
                             {category.plants.map((plant, pIndex) => (
-                                <div className='product-card'>
-                                    <div className="plant-image">
-                                        <img src={plant.image} alt={plant.name} />
-                                    </div>
-                                    <div className="plant_name"> {plant.name} </div>
-                                    <div className="plant_desc"> {plant.description} </div>
-                                    <div> ${plant.cost} </div>
-                                    <div className="addcart_btn">
-                                        <button className="add-btn" onClick={() => handleAddtoCart(index)}> Add to Cart </button>
-                                    </div>
+                                <div className='product-card' key={pIndex}>
+                                    <img src={plant.image} alt={plant.name} />
+                                    <div className="product-title"> {plant.name} </div>
+                                    <div className="product-description"> {plant.description} </div>
+                                    <div className='product-price'> ${plant.cost} </div>
+                                    <button className="product-button" onClick={() => handleAddtoCart(pIndex)}> Add to Cart </button>
                                 </div>
                             ))}
                             </div>
@@ -313,6 +309,6 @@ function ProductList({ onHomeClick }) {
             )}
         </div>
     );
-}
+};
 
 export default ProductList;
