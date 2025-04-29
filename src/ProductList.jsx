@@ -7,6 +7,7 @@ function ProductList({ onHomeClick }) {
     const [showCart, setShowCart] = useState(false);
     const [showPlants, setShowPlants] = useState(false); // State to control the visibility of the About Us page
     const [addedToCart, setAddedToCart] = useState({});
+    const dispatch = useDispatch();
     const plantsArray = [
         {
             category: "Air Purifying Plants",
@@ -256,7 +257,7 @@ function ProductList({ onHomeClick }) {
     };
 
     const handleAddtoCart = (plant) => {
-        dispatchEvent(addItem(plant))
+        dispatch(addItem(plant))
         setAddedToCart((prevState) => ({
             ...prevState,
             [plant.name]: true, //set product name to true since it is in the cart
